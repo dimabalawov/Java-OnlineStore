@@ -13,7 +13,14 @@ public class Main {
         OnlineStore.addUser(user1);
 
         OnlineStore.showUsers();
-
         System.out.println("Загальна кількість продуктів: " + OnlineStore.getTotalProducts());
+        try {
+            Product found = OnlineStore.findProductById(1);
+            System.out.println("Знайдено: " + found);
+            Product notFound = OnlineStore.findProductById(99);
+            System.out.println("Знайдено: " + notFound);
+        } catch (ProductNotFoundException e) {
+            System.err.println("Помилка: " + e.getMessage());
+        }
     }
 }

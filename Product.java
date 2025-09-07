@@ -1,4 +1,6 @@
 public class Product {
+    private static int counter = 0;
+    private int id;
     private String name;
     private String brand;
     private double price;
@@ -8,22 +10,19 @@ public class Product {
     }
 
     public Product(String name, String brand, double price) {
+        this.id = ++counter;
         this.name = name;
         this.brand = brand;
         this.price = price;
     }
 
+    public int getId() { return id; }
     public String getName() { return name; }
     public String getBrand() { return brand; }
     public double getPrice() { return price; }
 
     @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Product " + name + " видалено з пам’яті.");
-    }
-
-    @Override
     public String toString() {
-        return name + " (" + brand + ") - " + price + " грн";
+        return "ID: " + id + " | " + name + " (" + brand + ") - " + price + " грн";
     }
 }
